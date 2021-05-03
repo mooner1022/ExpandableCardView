@@ -1,6 +1,7 @@
 package host.stjin.expandablecardview
 
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Typeface
@@ -132,9 +133,10 @@ class ExpandableCardView @JvmOverloads constructor(context: Context, attrs: Attr
         typedArray.recycle()
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onFinishInflate() {
         super.onFinishInflate()
-        val density = resources.displayMetrics.density;
+        val density = resources.displayMetrics.density
 
         //Setting attributes
         if (!TextUtils.isEmpty(title)) card_title.text = title
@@ -159,7 +161,8 @@ class ExpandableCardView @JvmOverloads constructor(context: Context, attrs: Attr
 
         iconDrawable?.let { drawable ->
             card_header.visibility = View.VISIBLE
-            card_icon.background = drawable
+            card_icon.visibility = View.VISIBLE
+            card_icon.setImageDrawable(drawable)
         }
 
         setInnerView(innerViewRes)
@@ -364,9 +367,9 @@ class ExpandableCardView @JvmOverloads constructor(context: Context, attrs: Attr
     fun setIcon(@DrawableRes drawableRes: Int = -1, drawable: Drawable? = null) {
         if (drawableRes != -1) {
             iconDrawable = ContextCompat.getDrawable(context, drawableRes)
-            card_icon.background = iconDrawable
+            card_icon.setImageDrawable(iconDrawable)
         } else {
-            card_icon.background = drawable
+            card_icon.setImageDrawable(drawable)
             iconDrawable = drawable
         }
 
