@@ -41,6 +41,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_toStartOf="@+id/LL_switch_button"
                 android:layout_toEndOf="@+id/card_icon"
+                android:fontFamily="@font/nanumsquare_round_bold"
                 android:maxLength="39"
                 android:maxLines="1"
                 android:singleLine="true"
